@@ -17,4 +17,4 @@
   <%= render @article.comments %>
 </p>
 
-<%= link_to 'New Comment', new_article_comment_path(@article) %>
+<%= turbo_frame_tag 'new_comment', src: new_article_comment_path(@article), target: '_top' %>
