@@ -9,8 +9,12 @@ class CommentsController < ApplicationController
     @comment = @article.comments.create!(comment_params)
 
     respond_to do |format|
-      format.turbo_stream
-      format.html { redirect_to @article }
+      if @comment.save
+        format.turbo_stream
+        format.html { redirect_to @article }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+      end
     end
   end
 

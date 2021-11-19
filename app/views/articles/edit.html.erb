@@ -1,6 +1,6 @@
 <h1>Editing Article</h1>
 
-<%= turbo_frame_tag 'article' do %>
+<%= turbo_frame_tag @article do %>
   <%= render 'form', article: @article %>
 <% end %>
 

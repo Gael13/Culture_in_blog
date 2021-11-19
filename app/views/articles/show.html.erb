@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<%= turbo_stream_from @article %>
+
 <%= turbo_frame_tag 'article' do %>
   <p>
     <strong>Title:</strong>
