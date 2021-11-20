@@ -1,29 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Articles</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="lg:text-2xl md:text-xl text-lg lg:p-3 p-1 font-black text-gray-700">Articles</div>
 
-  <tbody>
-    <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.title %></td>
-        <td><%= article.content %></td>
-        <td><%= link_to 'Show', article %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= link_to 'New Article', new_article_path, class: "inline-block p-2 pl-5 pr-5 bg-blue-500 text-white text-lg rounded-lg focus:border-4 border-blue-300 mb-4", style: "color: white"%>
+<% @articles.each do |article| %>
+  <%= link_to article do %>
+    <div class="flex items-center justify-between w-3/4 p-2 lg:rounded-full md:rounded-full hover:bg-gray-100 cursor-pointer border-2 rounded-lg mb-4">
+      <div class="lg:flex md:flex items-center">
+        <div class="h-12 w-12 mb-2 lg:mb-0 border md:mb-0 rounded-full mr-3"></div>
+        <div class="flex flex-col">
+          <div class="text-sm leading-3 text-gray-700 font-bold w-full"><%= article.title %></div>
 
-<br>
-
-<%= link_to 'New Article', new_article_path %>
+          <div class="text-xs text-gray-600 w-full"><%= article.content %></div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
