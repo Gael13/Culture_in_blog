@@ -11,7 +11,7 @@ import "channels"
 import '@hotwired/turbo';
 import '@hotwired/turbo-rails';
 import '../controllers';
-import "stylesheets/application"
+//import "../css/application.css"
 
 Rails.start()
 Turbolinks.start()

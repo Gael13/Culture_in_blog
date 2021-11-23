@@ -1,20 +1,21 @@
-<p id="notice"><%= notice %></p>
+<div>
+  <p id="notice"><%= notice %></p>
 
+  <div class="lg:text-2xl md:text-xl text-lg lg:p-3 p-1 font-black text-gray-700">Articles</div>
 
-<div class="lg:text-2xl md:text-xl text-lg lg:p-3 p-1 font-black text-gray-700">Articles</div>
+  <%= link_to 'New Article', new_article_path, class: "inline-block p-2 pl-5 pr-5 bg-blue-500 text-white text-lg rounded-lg focus:border-4 border-blue-300 mb-4", style: "color: white"%>
+  <% @articles.each do |article| %>
+    <%= link_to article do %>
+      <div class="flex items-center justify-between w-3/4 p-2 lg:rounded-full md:rounded-full hover:bg-gray-100 cursor-pointer border-2 rounded-lg mb-4">
+        <div class="lg:flex md:flex items-center">
+          <div class="h-12 w-12 mb-2 lg:mb-0 border md:mb-0 rounded-full mr-3"></div>
+          <div class="flex flex-col">
+            <div class="text-sm leading-3 text-gray-700 font-bold w-full"><%= article.title %></div>
 
-<%= link_to 'New Article', new_article_path, class: "inline-block p-2 pl-5 pr-5 bg-blue-500 text-white text-lg rounded-lg focus:border-4 border-blue-300 mb-4", style: "color: white"%>
-<% @articles.each do |article| %>
-  <%= link_to article do %>
-    <div class="flex items-center justify-between w-3/4 p-2 lg:rounded-full md:rounded-full hover:bg-gray-100 cursor-pointer border-2 rounded-lg mb-4">
-      <div class="lg:flex md:flex items-center">
-        <div class="h-12 w-12 mb-2 lg:mb-0 border md:mb-0 rounded-full mr-3"></div>
-        <div class="flex flex-col">
-          <div class="text-sm leading-3 text-gray-700 font-bold w-full"><%= article.title %></div>
-
-          <div class="text-xs text-gray-600 w-full"><%= article.content %></div>
+            <div class="text-xs text-gray-600 w-full"><%= article.content %></div>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
-<% end %>
+</div>

@@ -1,22 +1,25 @@
-<p id="notice"><%= notice %></p>
 
-<%= turbo_stream_from @article %>
-<%= turbo_frame_tag @article do %>
-  <p class='p-3'>
-    <%= link_to 'Back', articles_path, 'data-turbo-frame': '_top' %>
-    <%= link_to 'Edit', edit_article_path(@article), class: 'px-4 py-2 rounded-md text-sm font-medium border-0 focus:outline-none focus:ring transition text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-700 focus:ring-blue-300' %>
-  </p>
+<div>
+  <p id="notice"><%= notice %></p>
 
-  <div class="lg:p-3 p-1 font-black text-gray-700">
-    <div class="lg:text-2xl md:text-xl text-lg"><%= @article.title %></div>
-    <p class="p-1">
-      <%= @article.content %>
+  <%= turbo_stream_from @article %>
+  <%= turbo_frame_tag @article do %>
+    <p class='p-3'>
+      <%= link_to 'Back', articles_path, 'data-turbo-frame': '_top' %>
+      <%= link_to 'Edit', edit_article_path(@article), class: 'px-4 py-2 rounded-md text-sm font-medium border-0 focus:outline-none focus:ring transition text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-700 focus:ring-blue-300' %>
     </p>
+
+    <div class="lg:p-3 p-1 font-black text-gray-700">
+      <div class="lg:text-2xl md:text-xl text-lg"><%= @article.title %></div>
+      <p class="p-1">
+        <%= @article.content %>
+      </p>
+    </div>
+  <% end %>
+
+  <div id='comments'>
+    <%= render @article.comments %>
   </div>
-<% end %>
 
-<div id='comments'>
-  <%= render @article.comments %>
+  <%= turbo_frame_tag 'new_comment', src: new_article_comment_path(@article), target: '_top' %>
 </div>
-
-<%= turbo_frame_tag 'new_comment', src: new_article_comment_path(@article), target: '_top' %>
